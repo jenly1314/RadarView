@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RadarView">
+        <attr name="android:textSize"/>
+        <attr name="android:textColor"/>
+        <attr name="android:text"/>
+        <attr name="labelTextSize" format="dimension"/>
+        <attr name="labelTextColor" format="color"/>
+        <attr name="labelText" format="string"/>
+        <attr name="format" format="string"/>
+        <attr name="sideColor" format="color"/>
+        <attr name="outsideBackgroundColor" format="color"/>
+        <attr name="insideBackgroundColor" format="color"/>
+        <attr name="duration" format="integer"/>
+        <attr name="textOffsetY" format="dimension"/>
+        <attr name="labelTextOffsetY" format="dimension"/>
+
+        <attr name="circleColor" format="color"/>
+        <attr name="lineColor" format="color"/>
+        <attr name="showLine" format="boolean"/>
+        <attr name="rotate" format="integer"/>
+        <attr name="showLabel" format="boolean"/>
+        <attr name="showText" format="boolean"/>
+        <attr name="scanTime" format="integer"/>
+        <attr name="insideStrokeWidth" format="dimension"/>
+        <attr name="outsideStrokeWidth" format="dimension"/>
+        <attr name="lineStrokeWidth" format="dimension"/>
+    </declare-styleable>
+</resources>
