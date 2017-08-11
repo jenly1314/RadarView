@@ -436,6 +436,11 @@ public class RadarView extends View {
         return String.format(format,value);
     }
 
+    public void showText(String text){
+        mIsRadar = false;
+        setText(text);
+    }
+
     /**
      * 显示分数
      * @param value    目标值（最终分数）
@@ -506,6 +511,7 @@ public class RadarView extends View {
 
     }
 
+
     public void setText(@StringRes int resId){
         this.mText = getResources().getString(resId);
         if(!mIsRadar){
@@ -556,6 +562,11 @@ public class RadarView extends View {
         mIsScaning = true;
         updateScan();
 
+    }
+
+    public void start(int... colors){
+        setScanColor(colors);
+        start();
     }
 
     /**
@@ -688,6 +699,10 @@ public class RadarView extends View {
 
     public int getOutsideColor() {
         return mOutsideBackgroundColor;
+    }
+
+    public void setRadar(boolean isRadar){
+        this.mIsRadar = isRadar;
     }
 
     public int getInsideColor() {
