@@ -16,17 +16,17 @@ RadarView for Android 是一个雷达扫描动画后，然后展示得分效果�
 <dependency>
   <groupId>com.king.view</groupId>
   <artifactId>radarview</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <type>pom</type>
 </dependency>
 ```
 ### Gradle:
 ```gradle
-compile 'com.king.view:radarview:1.0.1'
+compile 'com.king.view:radarview:1.0.2'
 ```
 ### Lvy:
 ```lvy
-<dependency org='com.king.view' name='radarview' rev='1.0.1'>
+<dependency org='com.king.view' name='radarview' rev='1.0.2'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```

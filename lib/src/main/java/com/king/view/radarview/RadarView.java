@@ -22,6 +22,7 @@
 package com.king.view.radarview;
 
 import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -31,6 +32,7 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
@@ -207,9 +209,17 @@ public class RadarView extends View {
         init(context,attrs);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public RadarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr,defStyleRes);
+        init(context,attrs);
+    }
+
+
+
     private void init(Context context,AttributeSet attrs) {
 
-        mPaint = new Paint();
+        mPaint =new Paint();
         mMatrix = new Matrix();
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RadarView);
@@ -265,27 +275,31 @@ public class RadarView extends View {
         int width = measureHandler(widthMeasureSpec,defaultWidth);
         int height = measureHandler(heightMeasureSpec,defaultHeight);
 
-        setMeasuredDimension(width,height);
         //圆心坐标
-        mCircleCenterX = (getWidth() + getPaddingLeft() - getPaddingRight())/ 2.0f;
-        mCircleCenterY = (getHeight() + getPaddingTop() - getPaddingBottom())/ 2.0f;
+        mCircleCenterX = (width + getPaddingLeft() - getPaddingRight())/ 2.0f;
+        mCircleCenterY = (height + getPaddingTop() - getPaddingBottom())/ 2.0f;
 
         //外圆半径
-        mRadius = (getWidth()- getPaddingLeft() - getPaddingRight() - mOutsideStrokeWidth) / 2.0f;
+        mRadius = (width - getPaddingLeft() - getPaddingRight() - mOutsideStrokeWidth) / 2.0f;
         //内院的半径 为外援半径的1/3
         mInsideRadius = mRadius / 3;
 
+        setMeasuredDimension(width,height);
+
     }
 
-    private int measureHandler(int measureSpec,int defaultSize){
+
+    private int measureHandler(int measureSpec, int defaultSize){
 
         int result = defaultSize;
         int measureMode = MeasureSpec.getMode(measureSpec);
         int measureSize = MeasureSpec.getSize(measureSpec);
-        if(measureMode == MeasureSpec.EXACTLY){
-            result = measureSize;
+        if(measureMode == MeasureSpec.UNSPECIFIED){
+            result = defaultSize;
         }else if(measureMode == MeasureSpec.AT_MOST){
             result = Math.min(defaultSize,measureSize);
+        }else{
+            result = measureSize;
         }
         return result;
     }
